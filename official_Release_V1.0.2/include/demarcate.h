@@ -1,0 +1,57 @@
+
+
+
+#ifndef __DEMARCATE_H__
+#define __DEMARCATE_H__
+
+#define STD_COMU_TYPE_DEMARCATE 1
+#define STD_COMU_TYPE_MEASURE 	2
+
+typedef struct
+{
+	//har :  harmonic
+	int   har_ratio; 		//谐波百分比 (1-->40)
+	char  har_times;		//谐波次数	 (2-->32)
+	float har_volt;			//加入的参考电压
+	float har_angle;		//n次谐波参考相位角
+	//float har_low_limit;	//实际测量谐波百分比的 下限
+	//float har_high_limit;	//上限
+}har_dem_comu_t;
+
+typedef struct
+{
+	float max_range;
+	float min_range;
+	float mid_high_range;
+	float mid_low_range;	
+	
+	int dem_ratio;		//标定参考值, 对于输出而言 即为测量结果值 (1-->40)
+	int times;
+	float har_vol_ref;
+}har_dem_save_t;
+
+typedef har_dem_save_t(*parray_har_dem_t)[40];	
+
+#define DEM_HAR_ONCE_FLAG 		2
+#define DEM_HAR_START_COMU_FLAG	3
+#define DEM_HAR_FINISH_FLAG 	4
+#define HARMONIC_DEMARCATE_FLAG 6
+int get_sys_flag(int type);
+int set_sys_flag(int type , int value);
+
+/* int is_litte_endian(void);
+unsigned char xor_sum_check(char *buf, char len);
+int cmd_parse(void);
+
+int set_gear(char va, char vb, char vc, char ia, char ib, char ic);
+int set_disp_gui(char type);
+int set_amplitude_value(float va, float vb, float vc, float ia, float ib, float ic);
+int amplitude_demarcate_comu(int type);
+
+int set_harmonic_value(char channel, char count, char harmonic, float amplitude, float angle); */
+int harmonic_demarcate_std_comu(har_dem_comu_t *pdem, int type);
+int harmonic_demarcate_process(har_dem_comu_t *pdem, int type);
+int clear_terminal(int index);
+
+
+#endif
