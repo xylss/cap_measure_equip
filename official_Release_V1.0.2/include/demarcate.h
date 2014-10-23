@@ -10,12 +10,11 @@
 typedef struct
 {
 	//har :  harmonic
-	int   har_ratio; 		//谐波百分比 (1-->40)
-	char  har_times;		//谐波次数	 (2-->32)
-	float har_volt;			//加入的参考电压
-	float har_angle;		//n次谐波参考相位角
-	//float har_low_limit;	//实际测量谐波百分比的 下限
-	//float har_high_limit;	//上限
+	int   har_ratio; 		// (1-->40)
+	char  har_times;		// (2-->32)
+	float har_volt;			
+	float har_angle;		
+
 }har_dem_comu_t;
 
 typedef struct
@@ -25,7 +24,7 @@ typedef struct
 	float mid_high_range;
 	float mid_low_range;	
 	
-	int dem_ratio;		//标定参考值, 对于输出而言 即为测量结果值 (1-->40)
+	int dem_ratio;		//ref, output result (1-->40)
 	int times;
 	float har_vol_ref;
 }har_dem_save_t;
